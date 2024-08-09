@@ -1,1 +1,265 @@
-<h1>HP</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="cropped-akasa_fundacion_logop-e1536551292826-192x192.png" type="image/x-icon">
+    <title>Manglar A-KASA</title>
+    <link rel="stylesheet" href="styles.css">
+    <img class="img-mundo" src="mundo.png" alt="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @font-face {
+            font-family: 'Candara';
+            src: url('Candara.ttf') format('truetype');
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: "Candara", sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            background-image: url("fondo1.jpg");
+            background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
+            background-position: center;
+            overflow: hidden; /* Oculta el scroll */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center; /* Centra el logo horizontalmente */
+            align-items: center; /* Centra el logo verticalmente */
+            padding: 10px;
+            z-index: 100;
+        }
+
+        .logo {
+            width: 170px; /* Tamaño general del logotipo */
+            transition: width 0.3s ease; /* Suaviza el cambio de tamaño */
+        }
+
+        .img-mundo {
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden; /* Oculta el texto que sale del cuadro */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            height: 30%;
+        }
+
+        @keyframes moveUp {
+            0% {
+                transform: translateY(20%); /* Comienza por debajo del cuadro */
+            }
+            100% {
+                transform: translateY(-100%); /* Termina por encima del cuadro */
+            }
+        }
+
+        .text-container {
+            position: fixed; /* Cambiado a fixed */
+            top: 60%; /* Ajusta la posición en pantallas con poca altura */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden; /* Oculta el texto que sale del cuadro */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%; /* Ajusta el ancho del cuadro */
+            max-height: 150px; /* Altura máxima del cuadro */
+            overflow: hidden; /* Evita que el texto se desborde */
+            white-space: normal; /* Evita saltos de línea */
+            font-size: 1rem; /* Tamaño del texto */
+        }
+
+        .story {
+            animation: moveUp 20s linear infinite; /* Duración de la animación */
+            white-space: nowrap; /* Evita que el texto se divida en líneas */
+            bottom: 50%; /* Comienza desde la parte inferior */
+            white-space: normal; /* Evita saltos de línea */
+            font-size: 1.1rem;
+        }
+
+        .story:hover {
+            animation-play-state: paused;
+        }
+
+        .fade {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: space-around;
+            z-index: 100;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: normal;
+            font-size: 1.2rem; /* Ajusta el tamaño de la fuente */
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        footer a span {
+            margin-left: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            margin-left: 8px; /* Espacio entre el icono y el texto */
+            white-space: nowrap;
+            font-size: 1.3rem; 
+        }
+
+        footer a:hover {
+            color: #FF7401;
+            transform: scale(1.1);
+        }
+
+        footer a:hover span {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                width: 120px; /* Tamaño reducido en tabletas */
+            }
+
+            .form-group {
+                flex-direction: column;
+            }
+
+            input[type="text"], input[type="password"] {
+                margin: 5px 0;
+                width: 90%;
+            }
+
+            footer a span {
+                display: none;
+                margin-left: 8px; /* Espacio entre el icono y el texto */
+            }
+            footer a {
+                padding: 10px;
+                font-size: 24px; /* Cambia el tamaño del icono */
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 20px;
+            }
+
+            .logo {
+                width: 150px; /* Tamaño aún más reducido en teléfonos */
+            }
+
+            footer a span {
+                display: none;
+                margin-left: 8px; /* Espacio entre el icono y el texto */
+            }
+        }
+    </style>
+</head>
+<body class="fade">
+    <header>
+        <img id="logo" class="logo" src="https://i.postimg.cc/K4X16bX0/akasa-fundacion-logop-e1536551292826.png" alt="Logo">
+    </header>
+
+    <div class="text-container">
+        <div class="story">
+            <p>
+                El proyecto “Estrategias comunitarias para la conservación de los manglares y la mejora de los medios de vida rurales” se implementó en tres municipios del Pacífico Sur colombiano. La región se encuentra dentro del hotspot de biodiversidad Tumbes-Chocó Magdalena, que incluye importantes áreas de manglares. La costa pacífica colombiana está cubierta por más de 194.000 ha de manglares los segundos más altos del mundo, que albergan una amplia gama de especies. El área objetivo del proyecto está cubierta por 29.100 ha de manglares dentro de los tres municipios (Timbiquí 7096 ha, Santa Bárbara de Iscuandé 9,183 ha y La Tola 12.420 ha). El 70% de los manglares de la región objetivo están protegidos por las comunidades locales, mientras que el 30% pertenece al Parque Nacional Natural “Sanquianga”, uno de los 59 parques nacionales registrados oficialmente en Colombia y administrado por el Estado. Sin embargo, la amenaza a este ecosistema ha aumentado constantemente debido a la expansión de la agricultura, la industria maderera, la urbanización y el impacto del cambio climático. El proyecto promueve la protección y el uso sostenible de estos sumideros de carbono que contribuyen de manera importante a la protección del clima y la generación de ingresos para las comunidades locales.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
+            const story = document.querySelector('.story');
+            let isTouching = false;
+
+            // Añadir clase de desvanecimiento al cargar la página
+            body.classList.add('fade-in');
+
+            // JavaScript para manejar las transiciones de desvanecimiento al hacer clic en un enlace
+            const links = document.querySelectorAll('a');
+
+            const fadeOut = (event) => {
+                event.preventDefault();
+                const link = event.currentTarget;
+                body.classList.remove('fade-in');
+                body.classList.add('fade');
+                setTimeout(() => {
+                    window.location.href = link.href;
+                }, 500); // Tiempo de la transición en milisegundos
+            };
+
+            // Añadir event listener a cada enlace
+            links.forEach(link => {
+                if (link.href.includes('#')) return; // Saltar enlaces de ancla
+                link.addEventListener('click', fadeOut);
+            });
+
+            // Pausar la animación al tocar el texto en móviles
+            story.addEventListener('touchstart', function() {
+                isTouching = true;
+                story.style.animationPlayState = 'paused';
+                story.style.overflowY = 'scroll'; // Permite desplazamiento manual
+            });
+
+            // Reanudar la animación al dejar de tocar el texto en móviles
+            story.addEventListener('touchend', function() {
+                isTouching = false;
+                story.style.animationPlayState = 'running';
+                story.style.overflowY = 'hidden'; // Desactiva desplazamiento manual
+            });
+
+            // Reanudar la animación si el dedo se mueve fuera del texto
+            story.addEventListener('touchmove', function(event) {
+                if (!isTouching) return;
+                const touch = event.touches[0];
+                const element = document.elementFromPoint(touch.clientX, touch.clientY);
+                if (element !== story) {
+                    isTouching = false;
+                    story.style.animationPlayState = 'running';
+                    story.style.overflowY = 'hidden';
+                }
+            });
+        });
+    </script>
+
+    <footer>
+        <a href="index.html"><i class="fa-solid fa-seedling"></i> <span>Raíces</span></a>
+        <a href="slayshow.html"><i class="fa-solid fa-leaf"></i> <span>Biodiversidad</span></a>
+        <a href="Graficas1.html"><i class="fa-solid fa-water"></i> <span>Observatorio</span></a>
+        <a href="login.html"><i class="fa-solid fa-tree"></i> <span>Acceso</span></a>
+    </footer>
+</body>
+</html>
