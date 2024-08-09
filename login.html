@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="shortcut icon" href="cropped-akasa_fundacion_logop-e1536551292826-192x192.png" type="image/x-icon">
+    <title>Login A-KASA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Candara';
+            src: url('Candara.ttf') format('truetype');
+        }
+        html, body {
+            height: 100%; 
+            margin: 0;
+            font-family: "Candara", sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url('fondo1.jpg');
+            background-size: cover; /* Asegura que la imagen cubra toda el área */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-attachment: fixed; /* Fija la imagen en su lugar */
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        body.fade-in {
+            opacity: 1;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            margin: 0 5px;
+            border: 2px solid #EF2028;
+            border-radius: 5px;
+            background-color: #203240;
+            color: white;
+            font-weight: bold;
+            width: 200px;
+        }
+
+        input::placeholder {
+            color: white;
+            font-weight: normal;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: 2.5px solid #EF2028;
+            background-color: #FF7401;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, border 0.3s;
+        }
+
+        button:hover {
+            background-color: #EF2028;
+        }
+
+        .message {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            color: black;
+            width: 100%;
+            text-align: center;
+        }
+
+        .error {
+            color: rgb(0, 0, 0);
+        }
+
+        .error1 {
+            color: #EF2028;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: space-around;
+            z-index: 100;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: normal;
+            font-size: 1.2rem; /* Ajusta el tamaño de la fuente */
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer a span {
+            margin-left: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            margin-left: 8px; /* Espacio entre el icono y el texto */
+            white-space: nowrap;
+            font-size: 1.3rem; 
+        }
+
+        .footer a:hover {
+            color: #FF7401;
+            transform: scale(1.1);
+        }
+
+        .footer a:hover span {
+            opacity: 1;
+        }
+
+        @media (min-width: 769px) {
+            .form-group {
+                flex-direction: row; /* Alinea los elementos en una fila */
+            }
+
+            input[type="text"], input[type="password"] {
+                margin: 0 5px;
+                width: auto;
+            }
+
+            button {
+                margin-left: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-group {
+                flex-direction: column;
+            }
+
+            input[type="text"], input[type="password"] {
+                margin: 5px 0;
+                width: 90%;
+            }
+
+            .footer a span {
+                display: none;
+                margin-left: 8px; /* Espacio entre el icono y el texto */
+            }
+            footer a {
+                padding: 10px;
+                font-size: 24px; /* Cambia el tamaño del icono */
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px;
+            }
+
+            .logo {
+                max-height: 45px;
+            }
+
+            .footer a span {
+                display: none;
+                margin-left: 8px; /* Espacio entre el icono y el texto */
+            }
+        }
+    </style>
+</head>
+<body class="fade-in">
+    <div class="logo">
+        <img src="akasa_fundacion_logop-e1536551292826.png" alt="Logo" width="150">
+    </div>
+    <div class="form-group">
+        <input type="text" id="username" placeholder="Usuario" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button onclick="validateLogin()">Iniciar Sesión</button>
+    </div>
+    <div id="message" class="message"></div>
+    <div class="footer">
+        <a href="index.html"><i class="fa-solid fa-seedling"></i> <span>Raíces</span></a>
+        <a href="slayshow.html"><i class="fa-solid fa-leaf"></i> <span>Biodiversidad</span></a>
+        <a href="Graficas1.html"><i class="fa-solid fa-water"></i> <span>Observatorio</span></a>
+        <a href="login.html"><i class="fa-solid fa-tree"></i> <span>Acceso</span></a>
+    </div>
+
+    <script>
+        function _0x1276(){const _0x322290=['className','getElementById','innerHTML','50UMceOs','9910446LLcWbe','22460220qjJfFJ','value','contraseña2','usuario3','4192rzSEyL','<strong>Si\x20conoces\x20tus\x20credenciales,\x20verifica\x20que\x20las\x20hayas\x20ingresado\x20correctamente.<br><span\x20class=\x27error\x27>Si\x20necesitas\x20registrarte,\x20</span>comunícate\x20a\x20<span\x20class=\x27error1\x27>info@fundacionakasa.org</span></strong>','Graficas1.html','1128JlnPLq','360056WkDbBp','usuario2','block','find','usuario1','location','1375957RgcIAq','2CAqpWd','19515CoqSWK','password','6894qWBDHH','39mHErcZ','message','style','contraseña3','42dXDkQh','1157558awKBhb','href'];_0x1276=function(){return _0x322290;};return _0x1276();}function _0x3ffe(_0x37625f,_0x4a3dea){const _0x127603=_0x1276();return _0x3ffe=function(_0x3ffe78,_0x4fa857){_0x3ffe78=_0x3ffe78-0xfc;let _0x99ccd1=_0x127603[_0x3ffe78];return _0x99ccd1;},_0x3ffe(_0x37625f,_0x4a3dea);}const _0x4264fc=_0x3ffe;(function(_0x22bf30,_0x45cea5){const _0x40a999=_0x3ffe,_0x56816d=_0x22bf30();while(!![]){try{const _0x50c832=parseInt(_0x40a999(0xfc))/0x1*(-parseInt(_0x40a999(0x105))/0x2)+parseInt(_0x40a999(0x104))/0x3*(-parseInt(_0x40a999(0x114))/0x4)+parseInt(_0x40a999(0xfd))/0x5*(-parseInt(_0x40a999(0x113))/0x6)+-parseInt(_0x40a999(0x10b))/0x7+-parseInt(_0x40a999(0x110))/0x8*(-parseInt(_0x40a999(0xff))/0x9)+-parseInt(_0x40a999(0x10a))/0xa*(parseInt(_0x40a999(0x11a))/0xb)+-parseInt(_0x40a999(0x10c))/0xc*(-parseInt(_0x40a999(0x100))/0xd);if(_0x50c832===_0x45cea5)break;else _0x56816d['push'](_0x56816d['shift']());}catch(_0x43bb0b){_0x56816d['push'](_0x56816d['shift']());}}}(_0x1276,0xc919c));const validUsers=[{'username':'usuario1','password':'contraseña1'},{'username':_0x4264fc(0x115),'password':_0x4264fc(0x10e)},{'username':_0x4264fc(0x10f),'password':_0x4264fc(0x103)}];function validateLogin(){const _0x5d7c56=_0x4264fc,_0xd735dc=document[_0x5d7c56(0x108)]('username')[_0x5d7c56(0x10d)],_0x22641e=document[_0x5d7c56(0x108)](_0x5d7c56(0xfe))[_0x5d7c56(0x10d)],_0xb4c5ec=document[_0x5d7c56(0x108)](_0x5d7c56(0x101)),_0x21abcc=validUsers[_0x5d7c56(0x117)](_0x2a6365=>_0x2a6365['username']===_0xd735dc&&_0x2a6365[_0x5d7c56(0xfe)]===_0x22641e);if(_0x21abcc&&_0xd735dc==_0x5d7c56(0x118)){window['location']['href']=_0x5d7c56(0x112);return;}if(_0x21abcc&&_0xd735dc==_0x5d7c56(0x115)){window[_0x5d7c56(0x119)][_0x5d7c56(0x106)]='Graficas2.html';return;}if(_0x21abcc&&_0xd735dc=='usuario3'){window[_0x5d7c56(0x119)]['href']='Graficas3.html';return;}else _0xb4c5ec[_0x5d7c56(0x109)]=_0x5d7c56(0x111),_0xb4c5ec[_0x5d7c56(0x107)]=_0x5d7c56(0x101),_0xb4c5ec[_0x5d7c56(0x102)]['display']=_0x5d7c56(0x116);}
+    </script>
+</body>
+</html>
